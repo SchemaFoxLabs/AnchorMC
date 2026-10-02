@@ -1,0 +1,79 @@
+name: Bug report
+description: Report a server or official website bug, including non-security functional failures.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read the [feedback rules](https://github.com/SchemaFoxLabs/AnchorMC/blob/main/docs/FeedbackRule_QA-SI.md) and remove private information from logs and screenshots.
+
+        Verified serious vulnerability, bug, or security reports that qualify for the reward earn a long-term Support Rank and public contributor recognition. Submission or acceptance alone does not establish reward eligibility. Rank progression depends on the value and number of your reports: **Support → SupportX → BugFinder → IssueExpert**.
+
+        For vulnerabilities or exploitable issues, use the [Security page](https://github.com/SchemaFoxLabs/AnchorMC/security) and select **Report a vulnerability**. If unavailable, ask only for a private contact method in a public issue; do not disclose vulnerability details. Ordinary functional bugs belong in this form.
+  - type: input
+    id: affected_area
+    attributes:
+      label: Affected server or website feature
+      description: Identify the server or official website feature where the bug occurs.
+      placeholder: "Example: Practice (practice), matchmaking"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem description
+      description: Describe the specific bug and how it affects you.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps or actions when the problem occurred
+      description: List reproduction steps, or explain what you were doing. If reproduction is unreliable, say so and describe your observations.
+      placeholder: "1. Join the server..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Explain what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Explain what happened instead, including any error message.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Client version and environment (optional)
+      description: Include relevant Minecraft client, modifications, operating system, or browser details.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or screenshots (optional)
+      description: Attach relevant evidence after removing private information and credentials.
+  - type: textarea
+    id: suspected_cause
+    attributes:
+      label: Suspected cause (optional)
+      description: Share your reasoning if you have a possible explanation. A diagnosis is not required.
+  - type: textarea
+    id: suggested_solution
+    attributes:
+      label: Suggested solution (optional)
+      description: Describe a possible fix if you have one.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have read the feedback rules.
+          required: true
+        - label: I have described a concrete problem with relevant details.
+          required: true
+        - label: I have removed personal or private information and am not publicly disclosing a security vulnerability.
+          required: true

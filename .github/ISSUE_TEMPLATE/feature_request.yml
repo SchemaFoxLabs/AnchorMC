@@ -1,0 +1,55 @@
+name: Feature request
+description: Suggest a concrete improvement to a server or official website feature.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read the [feedback rules](https://github.com/SchemaFoxLabs/AnchorMC/blob/main/docs/FeedbackRule_QA-SI.md) and explain the need behind your suggestion.
+
+        Requests are reviewed for necessity, feasibility, compatibility with the current architecture, and available development time. Review and implementation depend on these assessments and may take additional time.
+
+        For vulnerabilities or exploitable issues, use the [Security page](https://github.com/SchemaFoxLabs/AnchorMC/security) and select **Report a vulnerability**. If unavailable, ask only for a private contact method; do not disclose vulnerability details publicly.
+  - type: input
+    id: affected_area
+    attributes:
+      label: Related feature
+      description: Identify the server, system, or website feature this request concerns.
+      placeholder: "Example: Practice (practice), /ping command"
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: Current need or problem
+      description: Describe the concrete need this feature would address.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Requested behavior
+      description: Explain what you would like the feature to do.
+      placeholder: "Example: Let /ping show another player's latency."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives (optional)
+      description: Describe other approaches or workarounds you have considered.
+  - type: textarea
+    id: supporting_material
+    attributes:
+      label: Supporting material (optional)
+      description: Add examples or screenshots after removing private information.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have read the feedback rules.
+          required: true
+        - label: I have described a concrete need and the requested behavior.
+          required: true
+        - label: I have removed personal or private information and am not publicly disclosing a security vulnerability.
+          required: true

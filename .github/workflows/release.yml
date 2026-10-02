@@ -1,0 +1,35 @@
+name: Republish release
+run-name: Republish Dev from ${{ github.sha }}
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-Dev
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Read release notes
+        run: |
+          gh api "repos/$GH_REPO/contents/Changelogs/Dev.md?ref=$GITHUB_SHA" --jq .content | base64 --decode > "$RUNNER_TEMP/release-notes.md"
+
+      - name: Replace Dev release and tag
+        run: |
+          set -euo pipefail
+          # Move the tag to this run's commit so it no longer retains the previous history.
+          gh api --method PATCH "repos/$GH_REPO/git/refs/tags/Dev" -f sha="$GITHUB_SHA" -F force=true
+          release_id=$(gh api "repos/$GH_REPO/releases" --jq '.[] | select(.tag_name == "Dev") | .id')
+          if [ -n "$release_id" ]; then
+            gh api --method DELETE "repos/$GH_REPO/releases/$release_id"
+          fi
+          gh release create Dev --verify-tag --title 'Pre-Early Access v0.0.1' --notes-file "$RUNNER_TEMP/release-notes.md" --prerelease
