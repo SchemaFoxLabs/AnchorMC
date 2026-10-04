@@ -1,6 +1,6 @@
 <p align="center"><img src="icon.png" alt="AnchorMC icon" width="128"></p>
 
-# AnchorMC
+# <p align="center">AnchorMC
 
 A modern Minecraft 1.8 PvP server with PracticePvP, events, PartyPvP, and more.
 
